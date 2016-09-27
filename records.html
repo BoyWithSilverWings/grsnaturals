@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="./css/records.css">
+	<meta charset="utf-8" />
+	<title>GRS NATURALS</title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <!-- Insert this line above script imports  -->
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+  <!-- normal script imports etc  -->
+  <script src="./scripts/jquery-3.0.0.js"></script>
+  <script src="./scripts/records.js"></script>
+  <script src="./scripts/jquery.twbsPagination.js"></script>
+
+  <!-- Insert this line after script imports -->
+  <script>if (window.module) module = window.module;</script>
+
+  <style>
+    ul {
+      width: 100%;
+      margin: 0 auto;
+    }
+    li {
+      display: inline;
+      padding: 10px;
+    }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    #pagination {
+      border: solid;
+      margin: 0 auto;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="content">
+      <ul id="pagination" class="pagination-sm"></ul>    
+      <table id="records">
+      <thead>
+        <tr>
+          <th>Name and Address</th>
+          <th>Grand Total</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          
+        </tr>
+      </tbody>
+  </div>
+  
+</body>

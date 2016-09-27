@@ -1,0 +1,20 @@
+body {
+  background-color: HoneyDew;
+  position: relative;
+}
+h1{
+  font-family: Palatino Linotype, Book Antiqua3, Palatino6, serif;
+  text-align: center;
+  top: 50%;
+}
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+input {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
