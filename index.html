@@ -1,19 +1,40 @@
 <html lang="en">
 <head>
 
-  <link rel="stylesheet" type="text/css" href="./css/index.css">
 	<meta charset="utf-8" />
 	<title>GRS NATURALS</title>
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
   
 </head>
 <body>
-  <div class="content">
-    <h1>GRS NATURALS</h1>
-    <hr>
-    <input type="button" onclick="location.href='invoice.html';" value="INVOICE" />
-    <input type="button" onclick="location.href='records.html';" value="RECORDS" />
-  </div>
+<div class="homepage-hero-module">
+    <div class="video-container">
+        <div class="filter"></div>
+        <video autoplay loop class="fillWidth">
+            <source src="video/MP4/Think-Green.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+            <source src="video/WEBM/Think-Green.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>
+        <div class="poster hidden">
+            <!--<img src="video/Snapshots/Think-Green.jpg" alt="">-->
+        </div>
+    </div>
+	<div class="container">
+		<h1>GRS NATURALS</h1>
+		<div class="button-container">
+			<button class="myButton" onclick="location.href='invoice.html'" value="INVOICE">INVOICE</button>
+			<button class="myButton" onclick="location.href='records.html'" value="RECORDS">RECORDS</button>
+		</div>
+	</div>
+</div>
 
+	<!-- Insert this line above script imports  -->
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
-</body>
+  <!-- normal script imports etc  -->
+  
+  <script src="./scripts/front.js"></script>
+
+  <!-- Insert this line after script imports -->
+  <script>if (window.module) module = window.module;</script>
+</body>""

@@ -1,104 +1,149 @@
 <html lang="en">
+
 <head>
 
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <link rel="stylesheet" type="text/css" media="print" href="./css/print.css">
-	<meta charset="utf-8" />
-	<title>GRS NATURALS</title>
-	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <meta charset="utf-8" />
+  <title>GRS NATURALS</title>
+
   <!-- Insert this line above script imports  -->
-  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+  <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
 
-  <!-- normal script imports etc  -->
-  <script src="./scripts/jquery-3.0.0.js"></script>
-  <script src="./scripts/index.js"></script>
+<!-- normal script imports etc  -->
+<script src="./scripts/jquery-3.0.0.js"></script>
+<script src="./scripts/index.js"></script>
 
-  <!-- Insert this line after script imports -->
-  <script>if (window.module) module = window.module;</script>
-  
+<!-- Insert this line after script imports -->
+<script>if (window.module) module = window.module;</script>
+
 </head>
 
 <body>
-<div class="table-title">
-<h3>INVOICE</h3>
-</div>
-<table  class="table-fill" id="invoice_table">
-<thead>
-  <tr>
-    <th class="text-center" colspan="8" rowspan="3">                           GRS NATURALS                               <br>  Padinjarekara P.O  <br>           Vaikom-686146 Kottayam (Dist),Kerala     <br>           Phone:04829-222733,Mob:9447762626  <br>  THE KERALA VALUE ADDED TAX RULES,2005 FORM NO.8[SEE RULE 58 (10)]  <br><br>TAX INVOICE CASH/CREDIT</th>
-  </tr>
-  <tr>
-  </tr>
-  <tr>
-  </tr>
-  <tr>
-    <td>Invoice No.</td>
-    <td><div contenteditable></div></td>
-    <td>D.N No.</td>
-    <td><div contenteditable></div></td>
-    <td>P.O No</td>
-    <td><div contenteditable></div></td>
-    <td>Vehicle/L.R. No.</td>
-    <td><div contenteditable></div></td>
-  </tr>
-  <tr>
-    <td>Date</td>
-    <td><div contenteditable><input type="date" id="invoice_date"></div></td>
-    <td>Date</td>
-    <td><div contenteditable><input type="date"></div></td>
-    <td>Date</td>
-    <td><div contenteditable><input type="date"></div></td>
-    <td>Date</td>
-    <td><div contenteditable><input type="date"></div></td>
-  </tr>
-  <tr>
-    <td colspan="8" rowspan="3">Name &amp; Address of purchasing Dealer : <div contenteditable id="nameAddress"><br><br><br></div></td>
-  </tr>
-  <tr>
-  </tr>
-  <tr>
-  </tr>
-  <tr>
-    <td>Telephone No</td>
-    <td><div contenteditable></div></td>
-    <td>Mobile No.</td>
-    <td><div contenteditable></div></td>
-    <td>Fax No.</td>
-    <td><div contenteditable></div></td>
-    <td>Email</td>
-    <td><div contenteditable></div></td>
-  </tr>
-  <tr>
-    <td>Tin</td>
-    <td><div contenteditable></div></td>
-    <td colspan="2">CST Reg No</td>
-    <td colspan="5"><div contenteditable></div></td>
-  </tr>
-  <tbody>
-<tr>
-    <th class="serialNum">Serial Number</th>
-    <th>Sch with <br>entry No.</th>
-    <th>Commodity Item</th>
-    <th>HSN Code</th>
-    <th>Unit Price</th>
-    <th>Rate of<br>tax</th>
-    <th>Quantity <br>Kgs</th>
-    <th colspan="1">Net value<br>Rs.</th>
-    <th class="noprint"><button  class="myButton" onclick="addRow()">ADD ITEM</button></th>
-  </tr>
-  <tr class="table_of_items">
-    <td class="serialNum"></td>
-    <td><div name="invoice_product_sch[]" contenteditable></div></td>
-    <td><div name="invoice_product_com[]" contenteditable></div></td>
-    <td><div name="invoice_product_hsn[]" contenteditable></div></td>
-    <td><input type="number" class="of-items" name="invoice_product_price[]"></td>
-    <td><input type="number" class="of-items" name="invoice_product_tax[]"></td>
-    <td><input type="number" class="of-items" name="invoice_product_qty[]"></td>
-    <td><span class="product_sub_total" name="product_sub_total[]">0.0</span></td>
-    
-    <td class="noprint"><button  class="myButton" onclick="deleteRow(this)">DELETE</button></td>
-  </tr>
-  </tbody>
+  <div class="table-title">
+    <h3>INVOICE</h3>
+  </div>
+  <table class="table-fill">
+    <thead>
+      <tr>
+        <th class="text-center" colspan="8" rowspan="3"> GRS NATURALS <br> Padinjarekara P.O <br> Vaikom-686146 Kottayam (Dist),Kerala <br> Phone:04829-222733,Mob:9447762626
+          <br> THE KERALA VALUE ADDED TAX RULES,2005 FORM NO.8[SEE RULE 58 (10)] <br><br>TAX INVOICE CASH/CREDIT</th>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+        <td>Invoice No.</td>
+        <td>
+          <div contenteditable id="invoice_num"></div>
+        </td>
+        <td>D.N No.</td>
+        <td>
+          <div contenteditable></div>
+        </td>
+        <td>P.O No</td>
+        <td>
+          <div contenteditable></div>
+        </td>
+        <td>Vehicle/L.R. No.</td>
+        <td>
+          <div contenteditable></div>
+        </td>
+      </tr>
+      <tr>
+        <td>Date</td>
+        <td>
+          <div contenteditable><input type="date" id="invoice_date"></div>
+        </td>
+        <td>Date</td>
+        <td>
+          <div contenteditable><input type="date"></div>
+        </td>
+        <td>Date</td>
+        <td>
+          <div contenteditable><input type="date"></div>
+        </td>
+        <td>Date</td>
+        <td>
+          <div contenteditable><input type="date"></div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="8" rowspan="3">Name &amp; Address of purchasing Dealer :
+          <div contenteditable id="nameAddress"><br><br><br></div>
+        </td>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+        <td>Telephone No</td>
+        <td>
+          <div contenteditable></div>
+        </td>
+        <td>Mobile No.</td>
+        <td>
+          <div contenteditable></div>
+        </td>
+        <td>Fax No.</td>
+        <td>
+          <div contenteditable></div>
+        </td>
+        <td>Email</td>
+        <td>
+          <div contenteditable></div>
+        </td>
+      </tr>
+      <tr>
+        <td>Tin</td>
+        <td>
+          <div contenteditable></div>
+        </td>
+        <td colspan="2">CST Reg No</td>
+        <td colspan="5">
+          <div contenteditable></div>
+        </td>
+      </tr>
+  </table>
+  <table class="table-fill myTabl" id="invoice_table">
+    <tr>
+      <th>Serial Number</th>
+      <th>Sch with <br>entry No.</th>
+      <th>Commodity Item</th>
+      <th>HSN Code</th>
+      <th>Unit Price</th>
+      <th>Rate of<br>tax</th>
+      <th>Quantity <br>Kgs</th>
+      <th colspan="1">Net value<br>Rs.</th>
+      <th class="noprint">
+        <button class="myButton" onclick="addRow()">ADD ITEM</button>
+</th>
+</tr>
+<tr class="table_of_items">
+  <td></td>
+  <td>
+    <div name="invoice_product_sch[]" contenteditable></div>
+  </td>
+  <td>
+    <div name="invoice_product_com[]" contenteditable></div>
+  </td>
+  <td>
+    <div name="invoice_product_hsn[]" contenteditable></div>
+  </td>
+  <td><input type="number" class="of-items" name="invoice_product_price[]"></td>
+  <td><input type="number" class="of-items" name="invoice_product_tax[]"></td>
+  <td><input type="number" class="of-items" name="invoice_product_qty[]"></td>
+  <td><span class="product_sub_total" name="product_sub_total[]">0.0</span></td>
+
+  <td class="noprint">
+    <button class="myButton" onclick="deleteRow(this)">DELETE</button>
+</td>
+</tr>
+</table>
+<table class="table-fill" id="table-of-items">
+
   <tr>
     <th colspan="6">TOTAL</th>
     <th colspan="2"><span id="total">0.0</span></th>
@@ -119,12 +164,13 @@
     <td colspan="2"><input type="number" name="disc" id="disc"></td>
   </tr>
   <tr>
-    <td colspan="2" >GRAND TOTAL</td>
+    <td colspan="2">GRAND TOTAL</td>
     <td colspan="2"><span id="grand_total">0.0</span></td>
   </tr>
   <tr>
-    <td colspan="6" rowspan="3">           DECLARATION                      <br><br>          Certified that all the particulars shown in the above Tax invoice are true and correct and that my/our registration under KVAT act 2003 is valid as on the date of Bill</td>
-    <td colspan="2" rowspan="3">                For GRS NATURALS,<br><br><br>                     <br>                       Proprietor</td>
+    <td colspan="6" rowspan="3"> DECLARATION <br><br> Certified that all the particulars shown in the above Tax invoice are true and correct and that
+      my/our registration under KVAT act 2003 is valid as on the date of Bill</td>
+    <td colspan="2" rowspan="3"> For GRS NATURALS,<br><br><br> <br> Proprietor</td>
   </tr>
   <tr>
   </tr>
@@ -132,12 +178,12 @@
   </tr>
 </table>
 <button class="myButton" id="submitButton" onclick="deleteColumn()">Submit</button>
+<button class="myButton" id="left" onclick="location.href='index.html'">BACK</button>
 <script>
-  function deleteColumn() {
-    $(document).find('.noprint').remove();
-    
-  }
+    function deleteColumn() {
+      $(document).find('.noprint').remove();
+    }
 </script>
-  
-  
+
+
 </body>

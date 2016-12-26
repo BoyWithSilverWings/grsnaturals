@@ -1,7 +1,6 @@
-function addRow() {
-    
+function addRow() { 
     var table = document.getElementById("invoice_table");
-    var row = table.insertRow(11);
+    var row = table.insertRow(1);
     row.className = "table_of_items";
     var cell0 = row.insertCell(0);
     var cell1 = row.insertCell(1);
@@ -50,8 +49,6 @@ function calculateTotal() {
     grandtotal = parseFloat(total) + parseFloat(total_tax) - parseFloat(disc);
     var in_words = "Grand Total in words:\n"+number2text(grandtotal);
 
-
-
     //Binding variables to text
     $("#total").text(total);
     $("#total_tax").text(total_tax);
@@ -98,13 +95,13 @@ function convert_number(number)
     } 
     if (kn>0) 
     { 
-            res += (((res=="") ? "" : " ") + 
+            res += (((res==="") ? "" : " ") + 
             convert_number(kn) + " LAKH"); 
     } 
     if (Hn>0) 
     { 
-        res += (((res=="") ? "" : " ") +
-            convert_number(Hn) + " THOUSAND"); 
+        res += (((res==="") ? "" : " ") +
+        convert_number(Hn) + " THOUSAND"); 
     } 
 
     if (Dn) 
@@ -119,7 +116,7 @@ var tens = Array("", "", "TWENTY", "THIRTY", "FOURTY", "FIFTY", "SIXTY","SEVENTY
 
     if (tn>0 || one>0) 
     { 
-        if (!(res=="")) 
+        if (!(res==="")) 
         { 
             res += " AND "; 
         } 
@@ -129,7 +126,6 @@ var tens = Array("", "", "TWENTY", "THIRTY", "FOURTY", "FIFTY", "SIXTY","SEVENTY
         } 
         else 
         { 
-
             res += tens[tn];
             if (one>0) 
             { 
@@ -138,7 +134,7 @@ var tens = Array("", "", "TWENTY", "THIRTY", "FOURTY", "FIFTY", "SIXTY","SEVENTY
         } 
     }
 
-    if (res=="")
+    if (res==="")
     { 
         res = "zero"; 
     } 
@@ -148,18 +144,16 @@ var tens = Array("", "", "TWENTY", "THIRTY", "FOURTY", "FIFTY", "SIXTY","SEVENTY
 
 
 $(document).ready(function(){
-     var Datastore = require('./scripts/nedb.js')
-      , db = new Datastore({ filename: 'db/data.db', autoload: true });
-
-
+     var Datastore = require('./scripts/nedb.js'), 
+        db = new Datastore({ filename: 'db/data.db', autoload: true });
 
     //Update product totals on input 
     function updateTotals(elem) {
-            var tr = $(elem).closest('tr'),
-            quantity = $('[name="invoice_product_qty[]"]', tr).val(),
-            price = $('[name="invoice_product_price[]"]', tr).val();
-            var subtotal = parseInt(quantity)*parseInt(price);
-            $('.product_sub_total', tr).text(subtotal.toFixed(2));
+        var tr = $(elem).closest('tr'),
+        quantity = $('[name="invoice_product_qty[]"]', tr).val(),
+        price = $('[name="invoice_product_price[]"]', tr).val();
+        var subtotal = parseInt(quantity)*parseInt(price);
+        $('.product_sub_total', tr).text(subtotal.toFixed(2));
     }
 
     //Process on inputs 
@@ -175,9 +169,10 @@ $(document).ready(function(){
     });
 
     $("#submitButton").click(function(){
-        
-        var arr = [];
+        var i=1;
+        var arr = [], items=[];
         $('.table_of_items').each(function () {
+            arr = [];
             arr.push($("[name='invoice_product_sch[]']",this).text());
             arr.push($("[name='invoice_product_com[]']",this).text());
             arr.push($("[name='invoice_product_hsn[]']",this).text());
@@ -185,19 +180,19 @@ $(document).ready(function(){
             arr.push($("[name='invoice_product_tax[]']",this).val()) || 0;
             arr.push($("[name='invoice_product_qty[]']",this).val()) || 0;
             arr.push($("[name='product_sub_total[]']",this).text());
+            items.push(arr);
         });
-        //Define document
-        var doc = { 
-            nameAddress : $("#nameAddress").text()
-            , grandTotal : $("#grand_total").text()
-            , invoiceDate : $("#invoice_date").val()
-            , items : arr
+        var doc = {
+            num : $('#invoice_num').text(),
+            name : $("#nameAddress").text(),
+            date : $("#invoice_date").val(),
+            grand_total : $("#grand_total").text(),
+            items :  items
         };
-         
 
         db.insert(doc, function (err, newDoc) {   // Callback is optional
           // newDoc is the newly inserted document, including its _id
-          
+            window.print();
         });
         
     }); 

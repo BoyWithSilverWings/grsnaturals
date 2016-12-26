@@ -1,20 +1,82 @@
-body {
-  background-color: HoneyDew;
-  position: relative;
+
+.homepage-hero-module {
+    border-right: none;
+    border-left: none;
+    position: relative;
 }
-h1{
-  font-family: Palatino Linotype, Book Antiqua3, Palatino6, serif;
-  text-align: center;
-  top: 50%;
+.no-video .video-container video,
+.touch .video-container video {
+    display: none;
 }
-.content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.no-video .video-container .poster,
+.touch .video-container .poster {
+    display: block !important;
 }
-input {
-  margin-top: 30px;
-  margin-left: 30px;
+.video-container {
+    position: relative;
+    bottom: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+.video-container .poster img {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+.video-container .filter {
+    z-index: 100;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+}
+.video-container video {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+}
+.video-container video.fillWidth {
+    width: 100%;
 }
 
+.container {
+	position: fixed;
+	font-size: 2.6em;
+	left: 27%;
+	top: 30%;
+	color: white;
+	z-index: 5;
+}
+.button-container {
+	margin: 0 auto;
+	display: block;
+	color: black;
+	
+}
+.myButton {
+	background-color:#94b0e0;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:42px;
+	border:2px solid #4e6096;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:23px;
+	padding:17px 49px;
+	text-decoration:none;
+	text-shadow:0px 1px 12px #283966;
+	width: 200px;
+	height: 75px;
+	margin-left: 50px;
+}
+.myButton:hover {
+	background-color:#476e9e;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
