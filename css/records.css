@@ -67,8 +67,13 @@ li {
 	display: inline;
 	padding: 10px;
 }
+.right {
+	 display: block; 
+	margin: 0 auto;
+	margin-top: 20px;
+	float: right;
+}
 table {
-	font-family: arial, sans-serif;
 	border-collapse: collapse;
 	width: 100%;
 }
@@ -87,9 +92,13 @@ td, th {
 }
 .active {
 	background-color: #353ff4;
+	border: none;
 }
 .active a{
 	color: white;
+}
+.disabled a{
+	color: slategrey;
 }
 a {
 	text-decoration: none;
@@ -116,4 +125,8 @@ a {
 #filter:hover, .deleteRow:hover {
 	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.11), 0 10px 8px 0 rgba(0,0,0,0.08);
 	cursor: pointer;
+}
+
+#tables {
+	min-height: 700px;
 }

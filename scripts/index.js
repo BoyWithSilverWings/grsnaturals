@@ -12,7 +12,7 @@ function addRow() {
     var cell7 = row.insertCell(7);
     var cell8 = row.insertCell(8);
     cell0.innerHTML = "";
-    cell0.className = "serialNum"
+    cell0.className = "serialNum";
     cell1.innerHTML = "<div name=\"invoice_product_sch[]\" contenteditable></div>";
     cell2.innerHTML = "<div name=\"invoice_product_com[]\" contenteditable></div>";
     cell3.innerHTML = "<div name=\"invoice_product_hsn[]\" contenteditable></div>";
@@ -61,10 +61,8 @@ function calculateTotal() {
 function number2text(value) {
     var fraction = Math.round(frac(value)*100);
     var f_text  = "";
-
-    if(fraction > 0) {
+    if(fraction > 0) 
         f_text = "AND "+convert_number(fraction)+" PAISE";
-    }
     return convert_number(value)+" RUPEE "+f_text+" ONLY";
 }
 
@@ -88,40 +86,31 @@ function convert_number(number)
     var one=Math.floor(number % 10); 
     var res = ""; 
     if (Gn>0) 
-    { 
-        res += (convert_number(Gn) + " CRORE"); 
-    } 
-    if (kn>0) 
-    { 
+        res += (convert_number(Gn) + " CRORE");
+    if (kn>0) { 
             res += (((res==="") ? "" : " ") + 
             convert_number(kn) + " LAKH"); 
     } 
-    if (Hn>0) 
-    { 
+    if (Hn>0) { 
         res += (((res==="") ? "" : " ") +
         convert_number(Hn) + " THOUSAND"); 
     } 
-    if (Dn) 
-    { 
-        res += (((res=="") ? "" : " ") + 
+    if (Dn) { 
+        res += (((res==="") ? "" : " ") + 
             convert_number(Dn) + " HUNDRED"); 
     } 
     var ones = Array("", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX","SEVEN", "EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN","FOURTEEN", "FIFTEEN", "SIXTEEN", "SEVENTEEN", "EIGHTEEN","NINETEEN"); 
 var tens = Array("", "", "TWENTY", "THIRTY", "FOURTY", "FIFTY", "SIXTY","SEVENTY", "EIGHTY", "NINETY"); 
 
-    if (tn>0 || one>0) 
-    { 
+    if (tn>0 || one>0) { 
         if (!(res==="")) 
             res += " AND "; 
         if (tn < 2) 
             res += ones[tn * 10 + one]; 
-        else 
-        { 
+        else { 
             res += tens[tn];
             if (one>0) 
-            { 
                 res += ("-" + ones[one]); 
-            } 
         } 
     }
     if (res==="")
@@ -172,7 +161,8 @@ $(document).ready(function(){
             name : $("#nameAddress").text(),
             date : $("#invoice_date").val(),
             grand_total : $("#grand_total").text(),
-            items :  items
+            items :  items,
+            timestamp: Date()   
         };
         db.insert(doc, function (err, newDoc) {   // Callback is optional
           // newDoc is the newly inserted document, including its _id

@@ -52,23 +52,3 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-
-// Electron's UI library. We will need it for later.
-
-    
-/* $.get("https://talklike.wordpress.com/feed/", function(data) {
-    var $XML = $(data);
-    $XML.find("item").each(function() {
-        var $this = $(this),
-            item = {
-                title:       $this.find("title").text(),
-                link:        $this.find("link").text(),
-                description: $this.find("description").text(),
-                pubDate:     $this.find("pubDate").text(),
-                author:      $this.find("author").text()
-            };
-			alert(title);
-        
-    });
-});
- */

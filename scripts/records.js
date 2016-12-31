@@ -1,5 +1,7 @@
 var Datastore = require('./scripts/nedb.js'),
 	db = new Datastore({ filename: 'db/data.db', autoload: true });
+var converter = require('json-2-csv'),
+	jetpack = require('fs-jetpack');
 var entry;
 
 function appendToTable(docs) {
@@ -76,7 +78,7 @@ $(document).ready(function () {
 			$(this).parents('.entry').hide();
 		} 
 	});
-	$("#filter").on('click',function(event){
+	$("#filter").on('click',function(event) {
 		event.preventDefault();
 		var num = $('#invoice_num').val() || 0,
 			invoiceDate = $('#invoice_date').val() || null;
@@ -88,5 +90,19 @@ $(document).ready(function () {
 			forNum(num);
 		} else 
 			forDateNum(num,invoiceDate);
+	});
+	$('#backup').on('click',function(event) {
+		event.preventDefault();
+		db.find({}).exec(function (err, docs) {
+			converter.json2csv(docs, function(err, csv){
+				console.log(err);
+				jetpack.writeAsync(__dirname+'/temp/'+Date.now()+'.csv',csv)
+				.then(function(data) {
+					console.log("here");
+				},function(err) {
+					console.log(err);
+				});
+			});
+		});
 	});
 });
