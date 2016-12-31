@@ -14,43 +14,22 @@
 
   <!-- Insert this line after script imports -->
   <script>if (window.module) module = window.module;</script>
-
-  <style>
-    ul {
-      width: 100%;
-      margin: 0 auto;
-    }
-    li {
-      display: inline;
-      padding: 10px;
-    }
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-    #pagination {
-      border: solid;
-      margin: 0 auto;
-    }
-  </style>
   
 </head>
 <body>
   <div class="content">
-      <ul id="pagination" class="pagination-sm"></ul>
+      <div class="filter-content">
+        <label>Invoice Number</label>
+        <input type='text' placeholder='Number' id='invoice_num'/>
+        <label>Invoice Date</label>
+        <input type='date' placeholder='Invoice Date' id='invoice_date'/>
+        <button id="filter">Filter</button>
+      </div>
+      <hr/>
+      <ul id="pagination" class="sync-pagination pagination-sm"></ul>
       <div id="tables">    
       </div>
+      <ul id="pagination" class="sync-pagination pagination-sm"></ul>
   </div>
   <button class="myButton" id="left" onclick="location.href='index.html'">BACK</button>
 </body>

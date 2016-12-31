@@ -1,4 +1,7 @@
-/*** Button Styles **/
+body {
+	padding: 10px;
+	font-family: Helvetica, sans-serif, Arial;
+}
 .myButton {
 	-moz-box-shadow:inset 0px 1px 0px 0px #d9fbbe;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #d9fbbe;
@@ -18,7 +21,6 @@
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
 	padding:6px 24px;
@@ -53,7 +55,65 @@
 .deleteRow {
 	margin: 0 auto;
 	color: white;
-	background-color: red;
+	background-color: #e2515b;
 	padding: 10px;
 	border: none;
+}
+ul {
+	width: 100%;
+	margin: 0 auto;
+}
+li {
+	display: inline;
+	padding: 10px;
+}
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+#pagination {
+	text-align: center;
+	padding: 25px;
+}
+#pagination li {
+	border: 1px solid 	#b8bbc1;
+}
+.active {
+	background-color: #353ff4;
+}
+.active a{
+	color: white;
+}
+a {
+	text-decoration: none;
+}
+.entry {
+	margin: 25px 2px;
+}
+
+.filter-content {
+	padding: 20px 50px;
+	text-align: right;
+}
+
+.filter-content input {
+	margin: 0 10px;
+}
+
+#filter {
+	color: white;
+	background-color: green;
+	padding: 5px 10px;
+	border: none;
+}
+#filter:hover, .deleteRow:hover {
+	box-shadow: 0 8px 8px 0 rgba(0,0,0,0.11), 0 10px 8px 0 rgba(0,0,0,0.08);
+	cursor: pointer;
 }

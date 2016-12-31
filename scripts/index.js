@@ -36,6 +36,7 @@ function calculateTotal() {
     disc = 0,
     total_tax = 0,
     total = 0,
+    tran = 0,
     sub_t = 0;
     $('.table_of_items').each(function () {
         var tax = $('[name="invoice_product_tax[]"]', this).val() || 0,
@@ -46,7 +47,8 @@ function calculateTotal() {
         total += sub_t; 
     });
     disc = $("#disc").val() || 0;
-    grandtotal = parseFloat(total) + parseFloat(total_tax) - parseFloat(disc);
+    tran = $("#trans").val() || 0;
+    grandtotal = parseFloat(total) + parseFloat(total_tax) - parseFloat(disc) + parseFloat(tran);
     var in_words = "Grand Total in words:\n"+number2text(grandtotal);
 
     //Binding variables to text
@@ -63,7 +65,6 @@ function number2text(value) {
     if(fraction > 0) {
         f_text = "AND "+convert_number(fraction)+" PAISE";
     }
-
     return convert_number(value)+" RUPEE "+f_text+" ONLY";
 }
 
@@ -74,9 +75,7 @@ function frac(f) {
 function convert_number(number)
 {
     if ((number < 0) || (number > 999999999)) 
-    { 
         return "NUMBER OUT OF RANGE!";
-    }
     var Gn = Math.floor(number / 10000000);  /* Crore */ 
     number -= Gn * 10000000; 
     var kn = Math.floor(number / 100000);     /* lakhs */ 
@@ -88,7 +87,6 @@ function convert_number(number)
     var tn= Math.floor(number / 10); 
     var one=Math.floor(number % 10); 
     var res = ""; 
-
     if (Gn>0) 
     { 
         res += (convert_number(Gn) + " CRORE"); 
@@ -103,27 +101,20 @@ function convert_number(number)
         res += (((res==="") ? "" : " ") +
         convert_number(Hn) + " THOUSAND"); 
     } 
-
     if (Dn) 
     { 
         res += (((res=="") ? "" : " ") + 
             convert_number(Dn) + " HUNDRED"); 
     } 
-
-
     var ones = Array("", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX","SEVEN", "EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN","FOURTEEN", "FIFTEEN", "SIXTEEN", "SEVENTEEN", "EIGHTEEN","NINETEEN"); 
 var tens = Array("", "", "TWENTY", "THIRTY", "FOURTY", "FIFTY", "SIXTY","SEVENTY", "EIGHTY", "NINETY"); 
 
     if (tn>0 || one>0) 
     { 
         if (!(res==="")) 
-        { 
             res += " AND "; 
-        } 
         if (tn < 2) 
-        { 
             res += ones[tn * 10 + one]; 
-        } 
         else 
         { 
             res += tens[tn];
@@ -133,15 +124,10 @@ var tens = Array("", "", "TWENTY", "THIRTY", "FOURTY", "FIFTY", "SIXTY","SEVENTY
             } 
         } 
     }
-
     if (res==="")
-    { 
         res = "zero"; 
-    } 
     return res;
 }
-
-
 
 $(document).ready(function(){
      var Datastore = require('./scripts/nedb.js'), 
@@ -160,11 +146,10 @@ $(document).ready(function(){
     $('#invoice_table').on('input', '.of-items', function () {
         updateTotals(this);
         calculateTotal();
-       
     });
 
     //Process on input in discounts
-    $('#invoice_table').on('input','[name="disc"]',function() {
+    $('#table-of-items').on('input','.extra',function() {
         calculateTotal();
     });
 
@@ -189,11 +174,10 @@ $(document).ready(function(){
             grand_total : $("#grand_total").text(),
             items :  items
         };
-
         db.insert(doc, function (err, newDoc) {   // Callback is optional
           // newDoc is the newly inserted document, including its _id
             window.print();
-        });
-        
+            location.reload();
+        }); 
     }); 
 });
