@@ -142,6 +142,13 @@ $(document).ready(function(){
         calculateTotal();
     });
 
+    $('#invoice_date').on('input',function() {
+        var mainDate = $('#invoice_date').val();
+        $('.dateClass').each(function(){
+            $(this).val(mainDate);
+        });
+    })
+
     $("#submitButton").click(function(){
         var i=1;
         var arr = [], items=[];
@@ -162,10 +169,9 @@ $(document).ready(function(){
             date : $("#invoice_date").val(),
             grand_total : $("#grand_total").text(),
             items :  items,
-            timestamp: Date()   
+            timestamp: Date.now()   
         };
-        db.insert(doc, function (err, newDoc) {   // Callback is optional
-          // newDoc is the newly inserted document, including its _id
+        db.insert(doc, function (err, newDoc) {   
             window.print();
             location.reload();
         }); 
